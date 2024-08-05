@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyDicodingEvent</string>
+    <string name="title_home">Home</string>
+    <string name="title_upcoming">Upcoming</string>
+    <string name="title_finished">Finished</string>
+    <string name="event_pic">event_pic</string>
+    <string name="event_name">Nama Event</string>
+    <string name="register">Register</string>
+    <string name="event_owner">Penyelenggara</string>
+    <string name="event_time">Waktu</string>
+    <string name="event_quote">Sisa Kuota</string>
+    <string name="event_desc">Deskripsi</string>
+    <string name="event_category">Kategori</string>
+    <string name="searchbar_hint">Masukkan event</string>
+    <string name="empty_state">Event Tidak Ada</string>
+    <string name="title">Dicoding Event</string>
+    <string name="title_upcoming_home">Upcoming Events</string>
+    <string name="title_finished_home">Finished Events</string>
+</resources>
