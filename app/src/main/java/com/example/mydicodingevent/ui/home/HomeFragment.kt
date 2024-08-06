@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydicodingevent.databinding.FragmentHomeBinding
-import com.example.mydicodingevent.ui.adapter.EventListAdapter
 import com.example.mydicodingevent.ui.EventViewModel
+
+
 import com.example.mydicodingevent.ui.adapter.HorizontalListAdapter
 import com.example.mydicodingevent.ui.adapter.VerticalListAdapter
 

@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mydicodingevent.data.response.DetailResponse
 import com.example.mydicodingevent.data.response.EventResponse
 import com.example.mydicodingevent.data.response.ListEventsItem
 import com.example.mydicodingevent.data.retrofit.ApiConfig

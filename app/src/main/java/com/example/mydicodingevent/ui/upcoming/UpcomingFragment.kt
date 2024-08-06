@@ -96,11 +96,6 @@ class UpcomingFragment : Fragment() {
             }
         }
     }
-//    private fun setUpcomingEventList(eventList: List<ListEventsItem>){
-//        val adapter = EventListAdapter(0)
-//        adapter.submitList(eventList)
-//        binding.rvUpcoming.adapter = adapter
-//    }
 
     private fun showLoading(isLoading: Boolean){
         if (isLoading) binding.progressBar.visibility = View.VISIBLE

@@ -100,11 +100,6 @@ class FinishedFragment : Fragment() {
             }
         }
     }
-//    private fun setFinishedEventList(eventList: List<ListEventsItem>){
-//        val adapter = EventListAdapter(1)
-//        adapter.submitList(eventList)
-//        binding.rvFinished.adapter = adapter
-//    }
 
     private fun showLoading(isLoading: Boolean){
         if (isLoading) binding.progressBar.visibility = View.VISIBLE

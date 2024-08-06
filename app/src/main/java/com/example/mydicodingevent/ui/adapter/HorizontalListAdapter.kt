@@ -9,14 +9,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mydicodingevent.data.response.ListEventsItem
-import com.example.mydicodingevent.databinding.ItemEventBinding
 import com.example.mydicodingevent.databinding.ItemHomeHorizontalBinding
 import com.example.mydicodingevent.ui.DetailActivity
 
-class HorizontalListAdapter(): ListAdapter<ListEventsItem, HorizontalListAdapter.MyViewHorizontalHolder>(
+class HorizontalListAdapter: ListAdapter<ListEventsItem, HorizontalListAdapter.MyViewHorizontalHolder>(
     DIFF_CALLBACK
 ) {
-    class MyViewHorizontalHolder(val binding: ItemHomeHorizontalBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHorizontalHolder(private val binding: ItemHomeHorizontalBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(event: ListEventsItem){
             binding.tvItemName.text = event.name

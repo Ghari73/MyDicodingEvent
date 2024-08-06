@@ -11,7 +11,6 @@
     <string name="event_quote">Sisa Kuota</string>
     <string name="event_desc">Deskripsi</string>
     <string name="event_category">Kategori</string>
-    <string name="searchbar_hint">Masukkan event</string>
     <string name="empty_state">Event Tidak Ada</string>
     <string name="title">Dicoding Event</string>
     <string name="title_upcoming_home">Upcoming Events</string>

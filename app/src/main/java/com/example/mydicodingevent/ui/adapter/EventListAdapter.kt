@@ -13,10 +13,10 @@ import com.example.mydicodingevent.databinding.ItemEventBinding
 import com.example.mydicodingevent.ui.DetailActivity
 
 //instance fragment 1 -> upcoming, 2 -> finished
-class EventListAdapter(val instanceFragment: Int) : ListAdapter<ListEventsItem, EventListAdapter.MyViewHolder>(
+class EventListAdapter(private val instanceFragment: Int) : ListAdapter<ListEventsItem, EventListAdapter.MyViewHolder>(
     DIFF_CALLBACK
 ) {
-    class MyViewHolder(val binding: ItemEventBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(private val binding: ItemEventBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind(event: ListEventsItem){
             binding.tvItemName.text = event.name

@@ -5,18 +5,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.mydicodingevent.R
 import com.example.mydicodingevent.data.response.ListEventsItem
 import com.example.mydicodingevent.databinding.ActivityDetailBinding
 
-class DetailActivity() : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val viewModel: EventViewModel by viewModels()
 
@@ -53,32 +48,7 @@ class DetailActivity() : AppCompatActivity() {
                 }
             }
         }
-//        val id = intent.getStringExtra(KEY_ID)
-//
-//        println("poi : $id")
-//        if (id != null){
-//            viewModel.findDetailEvent(id)
-//            viewModel.detailEvent.observe(this@DetailActivity){ event ->
-//                println("LOL"+ event.name)
-//                binding.apply {
-//                    Glide.with(this@DetailActivity)
-//                        .load(event.imageLogo)
-//                        .into(binding.imgDetail)
-//                    tvNamaDetail.text = event.name
-//                    tvCategoryDetail.text = event.category
-//                    tvDescDetail.text = event.description
-//                    tvTimeDetail.text = event.beginTime
-//                    tvOwnerDetail.text = event.ownerName
-//                    tvQuoteDetail.text = event.quota.toString()
-//                    btnShare.setOnClickListener {
-//                        val url = event.link
-//                        val intent = Intent(Intent.ACTION_VIEW)
-//                        intent.data = Uri.parse(url)
-//                        startActivity(intent)
-//                    }
-//                }
-//            }
-//        }
+
 
         viewModel.isLoading.observe(this){ handler ->
             handler.getContentIfNotHandled()?.let {
