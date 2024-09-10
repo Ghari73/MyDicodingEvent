@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.mydicodingevent.databinding.FragmentFinishedBinding
 import com.example.mydicodingevent.ui.adapter.EventListAdapter
 import com.example.mydicodingevent.ui.EventViewModel
+import com.example.mydicodingevent.ui.ViewModelFactory
 
 class FinishedFragment : Fragment() {
 
@@ -20,7 +21,9 @@ class FinishedFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val finishedViewModel: EventViewModel by viewModels()
+    private val finishedViewModel: EventViewModel by viewModels {
+        ViewModelFactory.getInstance(requireActivity())
+    }
     private lateinit var eventAdapter: EventListAdapter
 
     override fun onCreateView(
@@ -46,14 +49,14 @@ class FinishedFragment : Fragment() {
             layoutManager = StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
             adapter = eventAdapter
         }
-        finishedViewModel.findFinishedEvent()
-        finishedViewModel.listFinishedEvents.observe(viewLifecycleOwner){ eventHandler ->
+        finishedViewModel.setFinishedEvent()
+        finishedViewModel.getFinishedEvent().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 eventAdapter.submitList(it)
             }
         }
 
-        finishedViewModel.isLoading.observe(viewLifecycleOwner){ eventHandler ->
+        finishedViewModel.getLoading().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 showLoading(it)
             }

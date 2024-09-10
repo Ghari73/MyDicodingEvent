@@ -30,4 +30,8 @@ class EventViewModel(private val eventRepository: EventRepository): ViewModel() 
             eventRepository.setFinishedEvent()
         }
     }
+
+    fun getLoading() = eventRepository.isLoading
+    fun searchUpcomingEvent(query: String) = eventRepository.searchUpcomingEvent(query)
+    fun searchFinishedEvent(query: String) = eventRepository.searchFinishedEvent(query)
 }

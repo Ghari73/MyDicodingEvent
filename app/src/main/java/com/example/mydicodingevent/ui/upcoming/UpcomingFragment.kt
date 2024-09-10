@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydicodingevent.databinding.FragmentUpcomingBinding
 import com.example.mydicodingevent.ui.adapter.EventListAdapter
 import com.example.mydicodingevent.ui.EventViewModel
+import com.example.mydicodingevent.ui.ViewModelFactory
 
 class UpcomingFragment : Fragment() {
 
@@ -19,7 +20,9 @@ class UpcomingFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val upcomingViewModel: EventViewModel by viewModels()
+    private val upcomingViewModel: EventViewModel by viewModels {
+        ViewModelFactory.getInstance(requireActivity())
+    }
     private lateinit var eventAdapter: EventListAdapter
 
     override fun onCreateView(
@@ -43,14 +46,14 @@ class UpcomingFragment : Fragment() {
             adapter = eventAdapter
         }
 
-        upcomingViewModel.findUpcomingEvent()
-        upcomingViewModel.listUpcomingEvents.observe(viewLifecycleOwner){ eventHandler ->
+        upcomingViewModel.setUpcomingEvent()
+        upcomingViewModel.getUpcomingEvent().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 eventAdapter.submitList(it)
             }
         }
 
-        upcomingViewModel.isLoading.observe(viewLifecycleOwner){ eventHandler ->
+        upcomingViewModel.getLoading().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 showLoading(it)
             }

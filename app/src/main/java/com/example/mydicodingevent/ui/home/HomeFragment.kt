@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mydicodingevent.databinding.FragmentHomeBinding
 import com.example.mydicodingevent.ui.EventViewModel
+import com.example.mydicodingevent.ui.ViewModelFactory
 
 
 import com.example.mydicodingevent.ui.adapter.HorizontalListAdapter
@@ -21,7 +22,9 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val viewModel: EventViewModel by viewModels()
+    private val viewModel: EventViewModel by viewModels{
+        ViewModelFactory.getInstance(requireActivity())
+    }
     private lateinit var horizontalAdapter: HorizontalListAdapter
     private lateinit var verticalAdapter: VerticalListAdapter
 
@@ -46,15 +49,15 @@ class HomeFragment : Fragment() {
             adapter = horizontalAdapter
         }
 
-        viewModel.findUpcomingEvent()
-        viewModel.listUpcomingEvents.observe(viewLifecycleOwner){ eventHandler ->
+        viewModel.setUpcomingEvent()
+        viewModel.getUpcomingEvent().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 val limitedList = it.take(5)
                 horizontalAdapter.submitList(limitedList)
             }
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner){ eventHandler ->
+        viewModel.getLoading().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 showLoadingUpcoming(it)
             }
@@ -66,15 +69,15 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = verticalAdapter
         }
-        viewModel.findFinishedEvent()
-        viewModel.listFinishedEvents.observe(viewLifecycleOwner){ eventHandler ->
+        viewModel.setFinishedEvent()
+        viewModel.getFinishedEvent().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 val limitedList = it.take(5)
                 verticalAdapter.submitList(limitedList)
             }
         }
 
-        viewModel.isLoading.observe(viewLifecycleOwner){ eventHandler ->
+        viewModel.getLoading().observe(viewLifecycleOwner){ eventHandler ->
             eventHandler.getContentIfNotHandled()?.let {
                 showLoadingFinished(it)
             }
