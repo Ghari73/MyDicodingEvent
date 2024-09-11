@@ -8,6 +8,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.mydicodingevent.R
+import com.example.mydicodingevent.data.local.entity.FavoriteEvent
 import com.example.mydicodingevent.data.response.ListEventsItem
 import com.example.mydicodingevent.databinding.ActivityDetailBinding
 
@@ -46,11 +48,28 @@ class DetailActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+
+                viewModel.getFavEventbyId(event.id.toString()).observe(this@DetailActivity){
+                    if (it == null) { //kondisi event belum difavoritkan
+                        floatingActionButton2.setImageResource(R.drawable.baseline_star_border_24)
+                        floatingActionButton2.setOnClickListener{
+                            viewModel.insertFavEvent(
+                                FavoriteEvent(
+                                    event.id.toString(), event.name, event.mediaCover
+                                )
+                            )
+                        }
+                    } else{ //kondisi event favorit
+                        floatingActionButton2.setImageResource(R.drawable.baseline_star_24)
+                        floatingActionButton2.setOnClickListener{
+                            viewModel.deleteFavEvent(event.id.toString())
+                        }
+                    }
+                }
             }
         }
 
-
-        viewModel.isLoading.observe(this){ handler ->
+        viewModel.getLoading().observe(this){ handler ->
             handler.getContentIfNotHandled()?.let {
                 showLoading(it)
             }
